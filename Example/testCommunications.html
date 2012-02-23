@@ -1,0 +1,70 @@
+<HTML>
+<head>
+<title>Hello World for NetLogo WISE LiveConnect</title>
+<script language="javascript">
+var state="not set";
+function setup() {
+    app.exportWorldState();
+    state = "ready";
+}
+
+function runTest() {
+    if (state === "not set" ) {
+        alert("press Setup Test first");
+    }
+    else
+    {
+        state =  app.getState();
+        outputDiv.innerHTML="Raw String form of World State...<br>";
+        outputDiv.innerHTML+=state;
+        
+        //test commandLater, as well as getting rid of current state 
+        app.commandLater("ca ask patches [ set pcolor red ] " );
+    }
+}
+
+function reloadState() {
+    if ( state === "not set" || state === "ready" )
+    {
+        alert("nothing to reload");
+    }
+    else
+    {
+        outputDiv.innerHTML="LOADED World from the following string:<br>"+state;
+        app.importWorldFromString( state );
+        app.commandLater("display");
+    }
+}
+
+function sendCommand( cmd ) {
+    app.commandLater(cmd);
+}
+
+function sendReporter( rpt ) {
+    var resul = app.report(rpt);
+    outputDiv.innerHTML="Result:<br>"+resul;
+}   
+</script>
+</head>
+
+<body>
+<applet id="app" archive="wisenetlogo.jar, NetLogo.jar, asm-all-3.3.1.jar, gluegen-rt-1.1.1.jar, jhotdraw-6.0b1.jar, jmf-2.1.1e.jar, jogl-1.1.1.jar, log4j-1.2.16.jar, mrjadapter-1.2.jar, parboiled-core-1.0.2.jar, parboiled-java-1.0.2.jar, pegdown-1.1.0.jar, picocontainer-2.13.6.jar, quaqua-7.3.4.jar, scala-library.jar, swing-layout-7.3.4.jar, " code="wisenetlogo.TalkativeApplet" width="738" height= "553">
+<param name="DefaultModel" value="Fire.nlogo">
+</applet>
+
+<div>
+<input type="button" value="Save Current State" onclick="setup()"> &nbsp; &nbsp; &nbsp; 
+<input type="button" id="Get State" value="Retrieve Export World State String" onclick="runTest()"> &nbsp; &nbsp; &nbsp;
+<input type="button" value="Reload World from State String" onclick="reloadState()"> <br>
+<br>
+<input type="button" value="Enter a Command" onclick="sendCommand(prompt('Command(s)?:'))">&nbsp; &nbsp; &nbsp;
+<input type="button" value="Enter a Reporter" onclick="sendReporter(prompt('Reporter?:'))">
+</div>
+<div>
+<p>
+output is below...</p>
+</div>
+<div id="outputDiv">
+</div>
+</body>
+</html>
