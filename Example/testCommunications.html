@@ -48,8 +48,12 @@ function sendReporter( rpt ) {
 </head>
 
 <body>
-<applet id="app" archive="wisenetlogo.jar, NetLogo.jar, asm-all-3.3.1.jar, gluegen-rt-1.1.1.jar, jhotdraw-6.0b1.jar, jmf-2.1.1e.jar, jogl-1.1.1.jar, log4j-1.2.16.jar, mrjadapter-1.2.jar, parboiled-core-1.0.2.jar, parboiled-java-1.0.2.jar, pegdown-1.1.0.jar, picocontainer-2.13.6.jar, quaqua-7.3.4.jar, scala-library.jar, swing-layout-7.3.4.jar, " code="wisenetlogo.TalkativeApplet" width="738" height= "553">
-<param name="DefaultModel" value="Fire.nlogo">
+<applet id="app" 
+  archive="wisenetlogo.jar, 
+           nlogo/NetLogo.jar" 
+  code="wisenetlogo.TalkativeApplet" 
+  width="738" height= "553">
+  <param name="DefaultModel" value="Fire.nlogo">
 </applet>
 
 <div>
