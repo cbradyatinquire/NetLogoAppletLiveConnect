@@ -1,0 +1,130 @@
+<HTML>
+<head>
+<title>Hello World for NetLogo WISE LiveConnect</title>
+<script language="javascript">
+
+var state = "not set";
+var trycallback = "tryitout";
+var listener = "";
+
+
+function reloadState() {
+	if ( state === "not set")
+	{
+		outputDiv.innerHTML="No saved state to load from....";
+	}
+	else
+	{
+	    outputDiv.innerHTML="LOADING World from the following string:<br>"+state;
+    	app.importWorldFromString( state, trycallback );
+    }
+}
+
+function tryitout()
+{
+  outputDiv.innerHTML="done";
+  //alert("done");
+}
+
+
+
+
+function exportWorldTest( callback )
+{
+	app.exportWorldStateAsynchronously( callback )
+}
+
+function showStateString( statevar ) {
+	state=statevar
+	outputDiv.innerHTML="BETTER<br>"+statevar
+}
+
+function sendCommand( cmd ) {
+    app.asynchronousCommand(cmd, "sayHi");
+}
+
+function sendReporter( rpt ) {
+    app.asynchronousReport(rpt, "showResult");
+ }
+ 
+ 
+ function sayHi()
+ {  
+ 	alert("hi");
+ }
+ 
+function showResult(resul)
+{
+    outputDiv.innerHTML="Result:<br>"+resul;
+    alert("Done with reporter");
+}   
+
+function addTestListener()
+{
+	if (listener === "")
+	{
+		app.addJSListener("showAllArgs");
+		eventDiv.innerHTML = "listener added<br>";
+		listener = "showAllArgs";
+	}
+}
+
+function removeAllListeners()
+{
+	app.removeAllJSListeners();
+	eventDiv.innerHTML = "listener(s) removed<br>";
+	listener = "";
+}
+
+function showAllArgs( arg1, arg2, arg3, arg4, arg5, arg6 )
+{
+	if ( arg1) 
+	{ eventDiv.innerHTML+= arg1 + " "; }
+	if ( arg2) 
+	{ eventDiv.innerHTML+= arg2 + " "; }
+	if ( arg3) 
+	{ eventDiv.innerHTML+= arg3 + " "; }
+	if ( arg4) 
+	{ eventDiv.innerHTML+= arg4 + " "; }
+	if ( arg5) 
+	{ eventDiv.innerHTML+= arg5 + " "; }
+	if ( arg6) 
+	{ eventDiv.innerHTML+= arg6; }
+	
+	eventDiv.innerHTML += "<br>";
+	
+	
+}
+
+</script>
+</head>
+
+<body>
+<applet id="app" archive="wisenetlogo.jar, NetLogo.jar, scala-library.jar" code="wisenetlogo.TalkativeApplet" width="738" height= "553">
+<param name="DefaultModel" value="Fire.nlogo">
+</applet>
+
+<div>
+<input type="button" value="NEW Save Current State" onclick="exportWorldTest( 'showStateString' )"> &nbsp; &nbsp; &nbsp; 
+
+<input type="button" value="Reload World from State String" onclick="reloadState()"> <br>
+<br>
+<input type="button" value="Enter a Command" onclick="sendCommand(prompt('Command(s)?:'))">&nbsp; &nbsp; &nbsp;
+<input type="button" value="Enter a Reporter" onclick="sendReporter(prompt('Reporter?:'))">
+<br><br>
+<input type="button" value="add a listener" onclick="addTestListener()">&nbsp; &nbsp; &nbsp;
+<input type="button" value="remove listeners" onclick="removeAllListeners()">&nbsp; &nbsp; &nbsp;
+
+</div>
+
+<div id="eventDiv">
+</div>
+
+<p>
+<div>
+output is below...</p>
+</div>
+<div id="outputDiv">
+</div>
+</body>
+</html>
