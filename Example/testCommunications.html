@@ -36,6 +36,30 @@ function reloadState() {
     }
 }
 
+function testFunction( toshow )
+{
+	alert(toshow);
+}
+
+function exportWorldTest( varname, callback )
+{
+	app.exportWorldStateAsync( varname, callback )
+}
+
+function exportWorldTest2( callback )
+{
+	app.exportWorldStateAsync2( callback )
+}
+
+function showStateString( ) {
+	outputDiv.innerHTML="HERE WE GO<br>"+state
+}
+
+function showStateString2( statevar ) {
+	state=statevar
+	outputDiv.innerHTML="BETTER<br>"+statevar
+}
+
 function sendCommand( cmd ) {
     app.commandLater(cmd);
 }
@@ -48,12 +72,13 @@ function sendReporter( rpt ) {
 </head>
 
 <body>
-<applet id="app" archive="wisenetlogo.jar, NetLogo.jar, asm-all-3.3.1.jar, gluegen-rt-1.1.1.jar, jhotdraw-6.0b1.jar, jmf-2.1.1e.jar, jogl-1.1.1.jar, log4j-1.2.16.jar, mrjadapter-1.2.jar, parboiled-core-1.0.2.jar, parboiled-java-1.0.2.jar, pegdown-1.1.0.jar, picocontainer-2.13.6.jar, quaqua-7.3.4.jar, scala-library.jar, swing-layout-7.3.4.jar, " code="wisenetlogo.TalkativeApplet" width="738" height= "553">
+<applet id="app" archive="wisenetlogo.jar, NetLogo.jar, scala-library.jar" code="wisenetlogo.TalkativeApplet" width="738" height= "553">
 <param name="DefaultModel" value="Fire.nlogo">
 </applet>
 
 <div>
-<input type="button" value="Save Current State" onclick="setup()"> &nbsp; &nbsp; &nbsp; 
+<input type="button" value="Alternative" onclick="exportWorldTest2( 'showStateString2' )"> &nbsp; &nbsp; &nbsp; 
+<input type="button" value="NEW Save Current State" onclick="exportWorldTest( 'state', 'showStateString()' )"> &nbsp; &nbsp; &nbsp; 
 <input type="button" id="Get State" value="Retrieve Export World State String" onclick="runTest()"> &nbsp; &nbsp; &nbsp;
 <input type="button" value="Reload World from State String" onclick="reloadState()"> <br>
 <br>
