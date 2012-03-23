@@ -36,6 +36,30 @@ function reloadState() {
     }
 }
 
+function testFunction( toshow )
+{
+	alert(toshow);
+}
+
+function exportWorldTest( varname, callback )
+{
+	app.exportWorldStateAsync( varname, callback )
+}
+
+function exportWorldTest2( callback )
+{
+	app.exportWorldStateAsync2( callback )
+}
+
+function showStateString( ) {
+	outputDiv.innerHTML="HERE WE GO<br>"+state
+}
+
+function showStateString2( statevar ) {
+	state=statevar
+	outputDiv.innerHTML="BETTER<br>"+statevar
+}
+
 function sendCommand( cmd ) {
     app.commandLater(cmd);
 }
@@ -50,14 +74,16 @@ function sendReporter( rpt ) {
 <body>
 <applet id="app" 
   archive="wisenetlogo.jar, 
-           nlogo/NetLogo.jar" 
+           nlogo/NetLogo.jar,
+           nlogo/lib/scala-library.jar" 
   code="wisenetlogo.TalkativeApplet" 
   width="738" height= "553">
   <param name="DefaultModel" value="Fire.nlogo">
 </applet>
 
 <div>
-<input type="button" value="Save Current State" onclick="setup()"> &nbsp; &nbsp; &nbsp; 
+<input type="button" value="Alternative" onclick="exportWorldTest2( 'showStateString2' )"> &nbsp; &nbsp; &nbsp; 
+<input type="button" value="NEW Save Current State" onclick="exportWorldTest( 'state', 'showStateString()' )"> &nbsp; &nbsp; &nbsp; 
 <input type="button" id="Get State" value="Retrieve Export World State String" onclick="runTest()"> &nbsp; &nbsp; &nbsp;
 <input type="button" value="Reload World from State String" onclick="reloadState()"> <br>
 <br>
