@@ -67,18 +67,13 @@ function sendCommand( cmd ) {
 function sendReporter( rpt ) {
     var resul = app.report(rpt);
     outputDiv.innerHTML="Result:<br>"+resul;
-}   
+}
 </script>
 </head>
 
 <body>
-<applet id="app" 
-  archive="wisenetlogo.jar, 
-           nlogo/NetLogo.jar,
-           nlogo/lib/scala-library.jar" 
-  code="wisenetlogo.TalkativeApplet" 
-  width="738" height= "553">
-  <param name="DefaultModel" value="Fire.nlogo">
+<applet id="app" archive="wisenetlogo.jar, NetLogoLite.jar" code="wisenetlogo.TalkativeApplet" width="738" height= "553">
+<param name="DefaultModel" value="Fire.nlogo">
 </applet>
 
 <div>
