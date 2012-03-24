@@ -6,10 +6,10 @@ Project Includes:  Simple subclass of org.nlogo.lite.Applet
 HTML file example.
 Referenced .logo file (Fire)
 
+To run Example/testCommunications.html first build the wisenetlogo.jar
 
-Limitations:  Currently, the released (5.0) NetLogoLite.jar does not provide access to necessary classes.  Therefore you have to build against NetLogo.jar
+    $ ./build.sh
 
-This also means that your HTML page has to include all of the jars in the /lib file
+This will create `Example/wisenetlogo.jar`
 
-Eventually, this can be corrected by altering the way that the NetLogoLite.jar is optimized.
-
+Then open `Example/testCommunicationsNew.html` in a browser.

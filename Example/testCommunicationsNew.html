@@ -15,9 +15,9 @@ function reloadState() {
 	}
 	else
 	{
-	    outputDiv.innerHTML="LOADING World from the following string:<br>"+state;
-    	app.importWorldFromString( state, trycallback );
-    }
+    outputDiv.innerHTML="LOADING World from the following string:<br>"+state;
+    app.importWorldFromString( state, trycallback );
+  }
 }
 
 function tryitout()
@@ -46,18 +46,18 @@ function sendCommand( cmd ) {
 function sendReporter( rpt ) {
     app.asynchronousReport(rpt, "showResult");
  }
- 
- 
+
+
  function sayHi()
- {  
+ {
  	alert("hi");
  }
- 
+
 function showResult(resul)
 {
     outputDiv.innerHTML="Result:<br>"+resul;
     alert("Done with reporter");
-}   
+}
 
 function addTestListener()
 {
@@ -78,34 +78,33 @@ function removeAllListeners()
 
 function showAllArgs( arg1, arg2, arg3, arg4, arg5, arg6 )
 {
-	if ( arg1) 
+	if ( arg1)
 	{ eventDiv.innerHTML+= arg1 + " "; }
-	if ( arg2) 
+	if ( arg2)
 	{ eventDiv.innerHTML+= arg2 + " "; }
-	if ( arg3) 
+	if ( arg3)
 	{ eventDiv.innerHTML+= arg3 + " "; }
-	if ( arg4) 
+	if ( arg4)
 	{ eventDiv.innerHTML+= arg4 + " "; }
-	if ( arg5) 
+	if ( arg5)
 	{ eventDiv.innerHTML+= arg5 + " "; }
-	if ( arg6) 
+	if ( arg6)
 	{ eventDiv.innerHTML+= arg6; }
-	
+
 	eventDiv.innerHTML += "<br>";
-	
-	
+
 }
 
 </script>
 </head>
 
 <body>
-<applet id="app" archive="wisenetlogo.jar, NetLogo.jar, scala-library.jar" code="wisenetlogo.TalkativeApplet" width="738" height= "553">
+<applet id="app" archive="wisenetlogo.jar, NetLogoLite.jar" code="wisenetlogo.TalkativeApplet" width="738" height= "553">
 <param name="DefaultModel" value="Fire.nlogo">
 </applet>
 
 <div>
-<input type="button" value="NEW Save Current State" onclick="exportWorldTest( 'showStateString' )"> &nbsp; &nbsp; &nbsp; 
+<input type="button" value="NEW Save Current State" onclick="exportWorldTest( 'showStateString' )"> &nbsp; &nbsp; &nbsp;
 
 <input type="button" value="Reload World from State String" onclick="reloadState()"> <br>
 <br>
